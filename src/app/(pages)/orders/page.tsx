@@ -1,18 +1,4 @@
 "use client";
-import useDispatchers from "@/hooks/useDispatchers";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-} from "recharts";
-import { chartData } from "@/data/chart.data";
 import styles from "./page.module.scss";
 import { useSelector } from "react-redux";
 import { IStore } from "@/typings/interfaces/store.interface";
@@ -21,7 +7,6 @@ import { FormEvent, useState } from "react";
 import { IOrder, Weekday } from "@/typings/interfaces/order.interface";
 import { OrderItemType } from "@/typings/interfaces/order.interface";
 import { orderService } from "@/services/order.service";
-import { generateChartData } from "@/util/generateChartData";
 
 function Orders() {
   // useWebSockets();
