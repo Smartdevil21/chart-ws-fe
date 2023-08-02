@@ -6,8 +6,10 @@ class OrderService {
   public socket: Socket<ServerEvents, ClientEvents>;
 
   constructor() {
-    console.log(process.env.BACKEND_URL);
-    this.socket = io(process.env.BACKEND_URL || "http://localhost:8001");
+    console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
+    this.socket = io(
+      process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8001"
+    );
   }
 
   public createOrder(order: Omit<IOrder, "id">): void {
