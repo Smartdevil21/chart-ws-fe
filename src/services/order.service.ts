@@ -6,7 +6,8 @@ class OrderService {
   public socket: Socket<ServerEvents, ClientEvents>;
 
   constructor() {
-    this.socket = io("http://192.168.43.17:8001");
+    console.log(process.env.BACKEND_URL);
+    this.socket = io(process.env.BACKEND_URL || "http://localhost:8001");
   }
 
   public createOrder(order: Omit<IOrder, "id">): void {

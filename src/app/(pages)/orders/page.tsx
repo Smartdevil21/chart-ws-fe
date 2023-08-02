@@ -20,12 +20,11 @@ import OrderItem from "@/components/orders/OrderItem";
 import { FormEvent, useState } from "react";
 import { IOrder, Weekday } from "@/typings/interfaces/order.interface";
 import { OrderItemType } from "@/typings/interfaces/order.interface";
-import useWebSockets from "@/hooks/useWebSockets";
 import { orderService } from "@/services/order.service";
 import { generateChartData } from "@/util/generateChartData";
 
 function Orders() {
-  useWebSockets();
+  // useWebSockets();
   const [order, setOrder] = useState<Omit<IOrder, "id">>({
     day: "SUN",
     item: "ChickenPuff",
@@ -34,7 +33,6 @@ function Orders() {
   });
 
   const orders = useSelector((store: IStore) => store.orders);
-  console.log(generateChartData(orders));
 
   const clearForm = () => {
     setOrder({
@@ -109,36 +107,6 @@ function Orders() {
             <button onClick={clearForm}>Cancel</button>
           </div>
         </form>
-        <ResponsiveContainer
-          width="100%"
-          height="100%"
-          className={styles.chart}
-        >
-          <LineChart
-            width={500}
-            height={300}
-            data={generateChartData(orders)}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="PaneerPuff"
-              stroke="#8884d8"
-              // activeDot={{ r: 8 }}
-            />
-            <Line type="monotone" dataKey="ChickenPuff" stroke="#82ca9d" />
-          </LineChart>
-        </ResponsiveContainer>
       </div>
       <div className={styles.lower_half}>
         <h1>Order history:</h1>

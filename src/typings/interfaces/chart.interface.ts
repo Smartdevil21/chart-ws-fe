@@ -5,3 +5,8 @@ export interface IChartEntry {
   ChickenPuff: number;
   PaneerPuff: number;
 }
+
+export interface IGenerateChartDataResponse {
+  cpd: number[];
+  ppd: number[];
+}
