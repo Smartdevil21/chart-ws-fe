@@ -48,6 +48,8 @@ function Test() {
     return generateChartData(orders);
   }, [orders]);
 
+  console.log(cpd);
+
   const data = {
     labels,
     datasets: [
